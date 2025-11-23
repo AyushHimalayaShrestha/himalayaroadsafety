@@ -27,4 +27,29 @@ class Product(models.Model):
     specs= models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
-    
+    def save(self,*args,**kwargs):
+        # Automatically generate slug if not provided
+        if not self.slug:
+            self.slug = slugify(self.name)
+            super().save(*args,**kwargs)
+    def specs_dict(self):
+        """Return specs as dictionary if possible"""
+        try:
+            return json.loads(self.specs)
+        except:
+            return{}
+        
+    def __str__(self):
+        return self.name
+
+# Tender Model
+class Tender(models.Model):
+    title = models.CharField(max_length=255)
+    description =models.TextField()
+    file = models.FileField(upload_to='tenders/')
+    publish_date =models.DateField()
+    end_date = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+def __str__(self):
+    return self.title
