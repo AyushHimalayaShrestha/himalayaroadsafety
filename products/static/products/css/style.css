@@ -1,0 +1,20 @@
+body {
+    background-color: #121212;
+    color: white;
+}
+
+.hero-section {
+    padding: 120px 0;
+}
+
+.product-card {
+    transition: 0.3s ease;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-img {
+    height: 250px;
+    object-fit: cover;
+}
