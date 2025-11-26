@@ -2,7 +2,7 @@
 
 {% for product in products %}
     <div style="margin-bottom: 20px;">
-        <a href="{% url 'product_detail' product.id %}">
+        <a href="{% url 'products:product_detail' product.id %}">
             <h2>{{ product.name }}</h2>
         </a>
         <p>{{ product.price }}</p>
