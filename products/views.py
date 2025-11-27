@@ -15,6 +15,5 @@ def product_detail(request, id):
     images = product.image.all()
     return render(request, 'products/product_detail.html',{
         'product':product,
-        'images':images,
         })
 
