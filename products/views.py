@@ -12,7 +12,6 @@ def product_list(request):
 
 def product_detail(request, id):
     product = get_object_or_404(Product, id=id)
-    images = product.image.all()
     return render(request, 'products/product_detail.html',{
         'product':product,
         })
