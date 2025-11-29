@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product,Supplier,Tender,Inquiry,Category
+from .models import Product,Supplier,Tender,Inquiry,Category,ProductImage
 # Register your models here.
 
 # Category Admin
@@ -29,3 +29,8 @@ class TenderAdmin(admin.ModelAdmin):
 class InquiryAdmin(admin.ModelAdmin):
     list_display =('name','email','phone','product','created_at')
     search_fields = ('name','email','phone')
+
+# ProductImage Admin
+@admin.register(ProductImage)
+class ProductImageAdmin(admin.ModelAdmin):
+    list_display = ('product', 'image')
