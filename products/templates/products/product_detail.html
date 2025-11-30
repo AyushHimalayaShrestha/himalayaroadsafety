@@ -14,7 +14,7 @@
         <div class="col-md-6">
 
             <!-- MAIN IMAGE -->
-            <img src="{{ product.thumbnail.url }}" 
+            <img src="{{ product.image.url }}" 
                  class="img-fluid rounded shadow-lg mb-3"
                  style="height: 380px; width: 100%; object-fit: cover;">
 
@@ -31,11 +31,17 @@
 
         <!-- RIGHT: DETAILS -->
         <div class="col-md-6">
-            <p class="lead">{{ product.description }}</p>
 
-            <p class="fw-bold fs-4 text-warning">Rs. {{ product.price }}</p>
+            <!-- PRODUCT SPECS -->
+            <p class="lead">{{ product.specs }}</p>
 
-            <p><strong>Supplier:</strong> {{ product.supplier.name }}</p>
+            <!-- PRICE -->
+            <p class="fw-bold fs-4 text-warning">Rs. {{ product.price_npr }}</p>
+
+            <!-- SUPPLIER -->
+            {% if product.supplier %}
+                <p><strong>Supplier:</strong> {{ product.supplier.name }}</p>
+            {% endif %}
 
             <p class="mt-4">
                 <a href="#" class="btn btn-warning px-4 py-2 fw-bold rounded-pill">
@@ -47,6 +53,7 @@
     </div>
 
     <!-- RELATED PRODUCTS -->
+    {% if product.category %}
     <div class="mt-5">
         <h3 class="fw-bold">Related Products</h3>
 
@@ -55,14 +62,17 @@
             {% for related in product.category.product_set.all|slice:":3" %}
             {% if related.id != product.id %}
             <div class="col-md-4">
-                <a href="{% url 'product_detail' related.id %}" class="text-decoration-none text-light">
+                <a href="{% url 'products:product_detail' related.id %}" class="text-decoration-none text-light">
                     <div class="card bg-secondary text-light border-0 product-card">
-                        <img src="{{ related.thumbnail.url }}" 
+
+                        <!-- FIXED IMAGE -->
+                        <img src="{{ related.image.url }}" 
                              class="card-img-top" 
                              style="height: 200px; object-fit: cover;">
+
                         <div class="card-body">
                             <h5 class="fw-bold">{{ related.name }}</h5>
-                            <p class="fw-bold text-warning">Rs. {{ related.price }}</p>
+                            <p class="fw-bold text-warning">Rs. {{ related.price_npr }}</p>
                         </div>
                     </div>
                 </a>
@@ -73,6 +83,7 @@
         </div>
 
     </div>
+    {% endif %}
 
 </div>
 
