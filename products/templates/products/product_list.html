@@ -22,34 +22,36 @@
            class="group block bg-slate-800/60 backdrop-blur-lg rounded-2xl overflow-hidden shadow-lg
                   border border-slate-700 hover:border-yellow-400 transition-all duration-300">
 
-            <!-- IMAGE -->
+            <!-- IMAGE - FIXED: Use product.image not productimage_set -->
             <div class="h-56 w-full overflow-hidden">
-                {% if product.productimage_set.first %}
-                <img src="{{ product.productimage_set.first.image.url }}"
-                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                {% if product.image %}
+                <img src="{{ product.image.url }}"
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                     alt="{{ product.name }}">
                 {% else %}
-                <img src="{% static 'images/no-image.png' %}"
-                     class="w-full h-full object-cover opacity-70">
+                <div class="w-full h-full bg-gray-700 flex items-center justify-center">
+                    <span class="text-gray-400">No Image</span>
+                </div>
                 {% endif %}
             </div>
 
             <!-- CONTENT -->
             <div class="p-6">
+                <!-- CATEGORY - FIXED: Use product.category.name -->
+                {% if product.category %}
                 <span class="text-xs text-yellow-400 font-semibold uppercase tracking-wide">
-                    {{ product.category }}
+                    {{ product.category.name }}
                 </span>
+                {% endif %}
 
                 <h3 class="text-xl font-bold text-white mt-2 group-hover:text-yellow-400 transition-colors">
                     {{ product.name }}
                 </h3>
 
-                <p class="text-slate-300 text-sm mt-2">
-                    {{ product.description|truncatewords:12 }}
-                </p>
-
+                <!-- PRICE - FIXED: Use product.price_npr -->
                 <div class="mt-4 flex items-center justify-between">
                     <span class="text-2xl font-bold text-yellow-400">
-                        Rs. {{ product.price }}
+                        Rs. {{ product.price_npr }}
                     </span>
 
                     <span class="px-4 py-2 text-sm font-medium bg-slate-700 text-slate-200 rounded-lg

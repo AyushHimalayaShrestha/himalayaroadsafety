@@ -2,19 +2,8 @@ from django.db import models
 from django.utils.text import slugify
 import json
 
-# Supplier Model
-class Supplier(models.Model):
-    name = models.CharField(max_length=255)
-    contact_person = models.CharField(max_length=255)
-    phone = models.CharField(max_length=255)
-    email = models.EmailField()
-    address = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.name
-    
-# Category
+# Category Model
 class Category(models.Model):
     name = models.CharField(max_length=120, unique=True)
     slug = models.SlugField(max_length=140, unique=True, blank=True)
@@ -28,18 +17,14 @@ class Category(models.Model):
         return self.name
 
 
-# Product Model
+# Product Model (Supplier and landed_cost removed)
 class Product(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, max_length=255)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
     price_npr = models.DecimalField(max_digits=10, decimal_places=2)
-    landed_cost = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.PositiveIntegerField(default=0)
-    supplier = models.ForeignKey(Supplier, on_delete=models.SET_NULL, null=True, blank=True)
     image = models.ImageField(upload_to='products/')
-
-    # JSON/TEXT field for specifications
     specs = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -84,12 +69,12 @@ class Inquiry(models.Model):
 
     def __str__(self):
         return f"Inquiry from {self.name}"
-    
-# Product Image
+
+
+# Product Image Model (for additional images)
 class ProductImage(models.Model):
-    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='products/')
 
-
-
-
+    def __str__(self):
+        return f"Image for {self.product.name}"
