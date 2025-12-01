@@ -53,7 +53,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "safegearnepal.urls"
+ROOT_URLCONF = "himalayaroadsafety.urls"
 
 TEMPLATES = [
     {
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "safegearnepal.wsgi.application"
+WSGI_APPLICATION = "himalayaroadsafety.wsgi.application"
 
 
 # Database
