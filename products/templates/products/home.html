@@ -16,25 +16,32 @@
         <div class="max-w-4xl mx-auto text-center">
             <div class="inline-flex items-center gap-2 bg-blue-900/30 border border-blue-700/50 rounded-full px-4 py-2 mb-6">
                 <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                <span class="text-blue-200 text-sm font-medium">Trusted Road Safety Partner</span>
+                <span class="text-blue-200 text-sm font-medium">Trusted Road Safety Partner • विश्वसनीय सडक सुरक्षा साझेदार</span>
             </div>
             
             <h1 class="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
                 Building <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">Safer Roads</span> Across Nepal
+                <span class="block text-2xl lg:text-3xl text-blue-200 mt-4 font-normal">
+                    नेपालभरि सुरक्षित सडकहरू निर्माण गर्दै
+                </span>
             </h1>
             
             <p class="text-xl text-blue-100 mb-8 leading-relaxed max-w-3xl mx-auto">
                 Premium certified road safety equipment and traffic management solutions. 
-                Your trusted partner for quality, reliability, and nationwide delivery.
+                <span class="text-yellow-300">Your trusted partner for quality, reliability, and nationwide delivery.</span>
+                <br>
+                <span class="text-blue-200 text-lg">
+                    गुणस्तर, विश्वसनीयता, र राष्ट्रव्यापी वितरणको लागि तपाईंको विश्वसनीय साझेदार।
+                </span>
             </p>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
                 <a href="{% url 'products:product_list' %}" class="group relative bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg">
-                    <span class="relative z-10">Explore Our Products</span>
+                    <span class="relative z-10">Explore Our Products • हाम्रा उत्पादनहरू</span>
                     <div class="absolute inset-0 bg-white/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </a>
                 <a href="/contact" class="group border-2 border-white/30 hover:border-white/50 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:bg-white/10 backdrop-blur-sm">
-                    Get Custom Quote
+                    Get Custom Quote • प्रस्ताव पाउनुहोस्
                 </a>
             </div>
             
@@ -42,19 +49,19 @@
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-2xl mx-auto">
                 <div class="text-center">
                     <div class="text-2xl lg:text-3xl font-bold text-white mb-1">50+</div>
-                    <div class="text-blue-200 text-sm">Products</div>
+                    <div class="text-blue-200 text-sm">Products • उत्पादन</div>
                 </div>
                 <div class="text-center">
                     <div class="text-2xl lg:text-3xl font-bold text-white mb-1">50+</div>
-                    <div class="text-blue-200 text-sm">Cities Served</div>
+                    <div class="text-blue-200 text-sm">Cities Served • शहरहरू</div>
                 </div>
                 <div class="text-center">
                     <div class="text-2xl lg:text-3xl font-bold text-white mb-1">24/7</div>
-                    <div class="text-blue-200 text-sm">Support</div>
+                    <div class="text-blue-200 text-sm">Support • सहयोग</div>
                 </div>
                 <div class="text-center">
                     <div class="text-2xl lg:text-3xl font-bold text-white mb-1">ISO</div>
-                    <div class="text-blue-200 text-sm">Certified</div>
+                    <div class="text-blue-200 text-sm">Certified • प्रमाणित</div>
                 </div>
             </div>
         </div>
@@ -70,14 +77,17 @@
     </div>
 </section>
 
-<!-- FEATURED PRODUCTS - FIXED ALIGNMENT -->
+<!-- FEATURED PRODUCTS -->
 <section class="py-20 bg-slate-900">
     <div class="max-w-7xl mx-auto px-4">
         <div class="text-center mb-16">
-            <span class="inline-block text-yellow-400 font-semibold text-lg mb-3">OUR PRODUCTS</span>
+            <span class="inline-block text-yellow-400 font-semibold text-lg mb-3">OUR PRODUCTS • हाम्रा उत्पादनहरू</span>
             <h2 class="text-4xl lg:text-5xl font-bold text-white mb-4">Featured Safety Solutions</h2>
             <p class="text-xl text-slate-300 max-w-2xl mx-auto">
                 High-quality road safety equipment designed for durability and compliance with international standards.
+                <span class="block text-blue-200 text-lg mt-2">
+                    अन्तर्राष्ट्रिय मानक अनुरूप टिकाउ र गुणस्तरीय सडक सुरक्षा उपकरणहरू।
+                </span>
             </p>
         </div>
 
@@ -85,7 +95,7 @@
             {% for product in products %}
             <div class="group bg-slate-800/60 backdrop-blur-lg rounded-2xl overflow-hidden shadow-lg border border-slate-700 hover:border-yellow-400 transition-all duration-300 hover:-translate-y-2 flex flex-col h-full">
                 
-                <!-- PRODUCT IMAGE - FIXED HEIGHT -->
+                <!-- PRODUCT IMAGE -->
                 <div class="relative h-64 w-full overflow-hidden bg-slate-700 flex-shrink-0">
                     {% if product.image %}
                     <img src="{{ product.image.url }}"
@@ -98,7 +108,7 @@
                     {% endif %}
                 </div>
 
-                <!-- PRODUCT INFO - FLEX COLUMN FOR ALIGNMENT -->
+                <!-- PRODUCT INFO -->
                 <div class="p-6 flex flex-col flex-grow">
                     <!-- CATEGORY -->
                     {% if product.category %}
@@ -112,7 +122,7 @@
                         {{ product.name }}
                     </h4>
 
-                    <!-- PRODUCT DESCRIPTION - IF YOU HAVE ONE -->
+                    <!-- PRODUCT DESCRIPTION -->
                     {% if product.specs %}
                     <div class="mb-4 flex-grow">
                         <p class="text-slate-300 text-sm line-clamp-2">
@@ -123,11 +133,14 @@
                     <div class="mb-4 flex-grow">
                         <p class="text-slate-300 text-sm">
                             High-visibility, durable construction for optimal road safety performance.
+                            <span class="block text-slate-400 text-xs mt-1">
+                                उच्च-दृश्यता, टिकाउ निर्माण र उत्तम सडक सुरक्षा प्रदर्शन।
+                            </span>
                         </p>
                     </div>
                     {% endif %}
 
-                    <!-- PRICE AND BUTTON - BOTTOM ALIGNED -->
+                    <!-- PRICE AND BUTTON -->
                     <div class="flex items-center justify-between mt-auto pt-4">
                         <span class="text-2xl font-bold text-yellow-400">
                             Rs. {{ product.price_npr }}
@@ -135,11 +148,11 @@
                         <div class="flex space-x-2">
                             <a href="{% url 'products:product_detail' product.id %}" 
                                class="px-4 py-2 text-sm font-medium bg-slate-700 text-slate-200 rounded-lg hover:bg-blue-600 hover:text-white transition-all">
-                                Details
+                                Details • विवरण
                             </a>
                             <a href="/contact?product={{ product.name|urlencode }}" 
                                class="px-4 py-2 text-sm font-medium bg-slate-700 text-slate-200 rounded-lg hover:bg-yellow-500 hover:text-black transition-all">
-                                Contact
+                                Contact • सम्पर्क
                             </a>
                         </div>
                     </div>
@@ -154,7 +167,12 @@
                     </svg>
                 </div>
                 <h3 class="text-2xl font-bold text-slate-300 mb-2">No Products Available</h3>
-                <p class="text-slate-400">We're updating our inventory. Please check back later.</p>
+                <p class="text-slate-400">
+                    We're updating our inventory. Please check back later.
+                    <span class="block text-slate-500 text-sm mt-1">
+                        हामी हाल सामानहरू अद्यावधिक गर्दैछौं। कृपया पछि फेरि जाँच गर्नुहोस्।
+                    </span>
+                </p>
             </div>
             {% endfor %}
         </div>
@@ -163,7 +181,7 @@
         <div class="text-center mt-16">
             <a href="{% url 'products:product_list' %}" 
                class="group inline-flex items-center gap-3 bg-gradient-to-r from-gray-900 to-blue-900 hover:from-blue-900 hover:to-gray-900 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
-                View All Products
+                View All Products • सबै उत्पादन हेर्नुहोस्
                 <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                 </svg>
@@ -172,7 +190,7 @@
     </div>
 </section>
 
-<!-- CTA SECTION - UPDATED WITH DIRECT CONTACT -->
+<!-- CTA SECTION -->
 <section class="py-20 bg-gradient-to-r from-slate-900 to-blue-900 relative overflow-hidden">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-5">
@@ -188,13 +206,19 @@
     
     <div class="relative max-w-4xl mx-auto px-4 text-center">
         <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
-            Get Your Road Safety Equipment
+            Need Road Safety Equipment?
         </h2>
-        <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+        <p class="text-xl text-blue-100 mb-2 max-w-2xl mx-auto">
+            सडक सुरक्षा उपकरण चाहिन्छ?
+        </p>
+        <p class="text-lg text-blue-200 mb-10 max-w-2xl mx-auto">
             Contact me directly for product inquiries, quotations, and expert advice on road safety solutions.
+            <span class="block text-yellow-300 mt-2">
+                उत्पादन जानकारी, प्रस्ताव र सडक सुरक्षा समाधानको लागि सिधै सम्पर्क गर्नुहोस्।
+            </span>
         </p>
         
-        <!-- SINGLE CALL BUTTON -->
+        <!-- CONTACT BUTTONS -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a href="tel:+977-9851278352" 
                class="group bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-xl inline-flex items-center gap-3 text-lg w-full sm:w-auto justify-center">
@@ -205,7 +229,7 @@
             <a href="mailto:himalayaroadsafety@gmail.com" 
                class="group border-2 border-white/30 hover:border-white/50 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 hover:bg-white/10 backdrop-blur-sm inline-flex items-center gap-3 w-full sm:w-auto justify-center">
                 <i class="fas fa-envelope"></i>
-                Email Me
+                Email Me • इमेल गर्नुहोस्
             </a>
         </div>
         
@@ -214,19 +238,24 @@
             <div class="inline-flex items-center gap-6 bg-blue-900/30 border border-blue-700/50 rounded-2xl px-6 py-4">
                 <div class="text-center">
                     <div class="text-xl font-bold text-white">Direct Contact</div>
-                    <div class="text-blue-200 text-sm">No middlemen</div>
+                    <div class="text-blue-200 text-sm">सिधै सम्पर्क • No Middlemen</div>
                 </div>
                 <div class="h-8 w-px bg-blue-600"></div>
                 <div class="text-center">
                     <div class="text-xl font-bold text-white">Quick Quote</div>
-                    <div class="text-blue-200 text-sm">Within 24 hours</div>
+                    <div class="text-blue-200 text-sm">छिटो प्रस्ताव • Within 24 Hours</div>
                 </div>
                 <div class="h-8 w-px bg-blue-600"></div>
                 <div class="text-center">
                     <div class="text-xl font-bold text-white">Expert Advice</div>
-                    <div class="text-blue-200 text-sm">Personal guidance</div>
+                    <div class="text-blue-200 text-sm">विशेषज्ञ सल्लाह • Personal Guidance</div>
                 </div>
             </div>
+        </div>
+        
+        <div class="mt-8 text-blue-200">
+            <p>📍 Based in Kathmandu, serving all of Nepal • काठमाडौंबाट, सम्पूर्ण नेपालमा सेवा</p>
+            <p class="mt-1 text-sm">⏰ 24/7 Contact Available • २४/७ सम्पर्क सम्भव</p>
         </div>
     </div>
 </section>
