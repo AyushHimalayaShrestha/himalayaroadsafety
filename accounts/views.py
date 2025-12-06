@@ -12,13 +12,14 @@ def login_view(request):
 
         user = authenticate(request, username=username, password=password)
 
-        if user is not None:
+        if user:
             login(request, user)
-            return redirect("/")   # redirect to home after login
+            return redirect("products:home")
         else:
             messages.error(request, "Invalid username or password")
 
     return render(request, "accounts/login.html")
+
 
 # Logout
 def logout_view(request):
