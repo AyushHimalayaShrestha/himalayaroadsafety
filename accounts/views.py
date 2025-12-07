@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth.models import User
+from .forms import RegisterForm
 # Create your views here.
 
 # Login
@@ -28,28 +28,19 @@ def logout_view(request):
 
 # Register
 def register_view(request):
+    form = RegisterForm()
+
     if request.method == "POST":
-        username = request.POST.get("username")
-        email = request.POST.get("email")
-        password = request.POST.get("password")
-        confirm = request.POST.get("confirm")
+        form = RegisterForm(request.POST)
 
-        if password != confirm:
-            messages.error(request, "Passwords do not match")
-            return redirect("accounts:register")
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data["password"])
+            user.save()
 
-        if User.objects.filter(username=username).exists():
-            messages.error(request, "Username already taken")
-            return redirect("accounts:register")
+            messages.success(request, "Account created successfully! Login now.")
+            return redirect("accounts:login")
+        else:
+            messages.error(request, "Please correct the error below.")
 
-        user = User.objects.create_user(
-            username=username,
-            email=email,
-            password=password
-        )
-        user.save()
-        messages.success(request, "Account created successfully. Please login.")
-        return redirect("accounts:login")
-
-    return render(request, "accounts/register.html")
-
+    return render(request, "accounts/register.html", {"form": form})
