@@ -24,7 +24,7 @@ def login_view(request):
 # Logout
 def logout_view(request):
     logout(request)
-    return redirect("/")
+    return redirect("products:home")
 
 # Register
 def register_view(request):
