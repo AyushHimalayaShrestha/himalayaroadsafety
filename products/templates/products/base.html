@@ -33,7 +33,8 @@
         <a href="{% url 'contact:contact_page' %}" class="hover:text-white">Contact</a>
 
         <!-- AUTH SECTION -->
-        {% if user.is_authenticated %}
+       {% if request.user.is_authenticated %}
+
           <div class="relative group">
             <button class="text-yellow-300 font-semibold">
               {{ user.username }}
